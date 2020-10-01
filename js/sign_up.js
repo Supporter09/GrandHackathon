@@ -18,6 +18,7 @@ register_btn.addEventListener('click',(e)=>{
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
+        alert(errorMessage)
         // ...
         });
         db.collection('user').add({
