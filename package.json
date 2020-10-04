@@ -1,0 +1,25 @@
+{
+  "name": "grandhackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "consolidate": "^0.16.0",
+    "express": "^4.17.1",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Supporter09/GrandHackathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Supporter09/GrandHackathon/issues"
+  },
+  "homepage": "https://github.com/Supporter09/GrandHackathon#readme"
+}
