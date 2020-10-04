@@ -1,10 +1,21 @@
 const sign_in_btn = document.querySelector("#signin")
-
+//SOMETHING AT INDEX.HTML
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
     //   var displayName = user.displayName;
       var email = user.email;
+      var sign_up_btn = document.querySelector("#sign_up");
+      sign_up_btn.innerHTML="Sign Out";
+      sign_up_btn.setAttribute('href',"#");
+      sign_up_btn.addEventListener('click',()=>{
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          console.log("User SIGN OUT")
+        }).catch(function(error) {
+          // An error happened.
+        });
+      })
     //   var emailVerified = user.emailVerified;
     //   var photoURL = user.photoURL;
     //   var isAnonymous = user.isAnonymous;
@@ -16,6 +27,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     } else {
       // User is signed out.
       // ...
+      var sign_up_btn = document.querySelector("#sign_up");
+      sign_up_btn.innerHTML="Sign In";
+      sign_up_btn.setAttribute('href',"./sign_in");
     }
   });
 
@@ -39,4 +53,6 @@ sign_in_btn.addEventListener('click', (e)=>{
     }
 
     
-})
+}).then(
+  window.location.href ="./"
+)
