@@ -18,5 +18,13 @@ app.get('/upload-question',(req,res) => {
 });
 
 
-console.log('listen on port localhost:3000');
+app.get('/sign_in',(req,res) => {
+    res.render('sign_in');
+})
+
+app.get('/sign_up', (req,res) => {
+    res.render('sign_up');
+})
+
+console.log('listen on port http://localhost:3000');
 app.listen(port);
