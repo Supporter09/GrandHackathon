@@ -11,5 +11,12 @@ app.use(express.static('public'));
 app.get('/',(req,res) => {
     res.render('index');
 })
+
+
+app.get('/upload-question',(req,res) => {
+    res.render('ques-upload');
+});
+
+
 console.log('listen on port localhost:3000');
 app.listen(port);
