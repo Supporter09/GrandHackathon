@@ -72,6 +72,10 @@ app.get('/sign_up', (req,res) => {
     res.render('sign_up');
 })
 
+app.get('/blank-static', (req,res) => {
+    res.render('blank-static');
+})
+
 app.post('/upload-question',(req,res) => {
     console.log(req.body);
     const input_data = req.body;
