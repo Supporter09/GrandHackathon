@@ -12,5 +12,5 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
   const db = firebase.firestore();
-  db.settings({ timestampsInSnapshots: true});
+  // db.settings({ timestampsInSnapshots: true});
   var storageRef = firebase.storage().ref();
