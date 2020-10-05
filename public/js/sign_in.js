@@ -56,3 +56,5 @@ sign_in_btn.addEventListener('click', (e)=>{
 }).then(
   window.location.href ="./"
 )
+
+//yến nhi, trang trần, thư
