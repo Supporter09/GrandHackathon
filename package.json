@@ -25,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/Supporter09/GrandHackathon/issues"
   },
-  "homepage": "https://github.com/Supporter09/GrandHackathon#readme"
+  "homepage": "https://github.com/Supporter09/GrandHackathon#readme",
+  "type": "module"
 }

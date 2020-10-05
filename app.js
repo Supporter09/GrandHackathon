@@ -1,4 +1,11 @@
-const firebaseConfig = {
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const firebase = require('firebase-admin');
+// import * from 'firebase';
+// const firebase = require('firebase/app');
+// require('firebase/database');
+// require('firebase/analytics');
+var firebaseConfig = {
     apiKey: "AIzaSyCZ67Ve4ozcjpLZYsE_zxDSL1JkCZrq2aY",
     authDomain: "grandhackathon.firebaseapp.com",
     databaseURL: "https://grandhackathon.firebaseio.com",
@@ -10,10 +17,10 @@ const firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+//   firebase.analytics();
   const db = firebase.firestore();
   db.settings({ timestampsInSnapshots: true});
-  var storageRef = firebase.storage().ref();
+//   var storageRef = firebase.storage().ref();
 //firebase thing-yy;
 
 
@@ -27,7 +34,7 @@ const cons = require('consolidate');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer();
-const firebase_timestamp = new firebase.firestore.Timestamp;
+// const firebase_timestamp = new firebase.firestore.Timestamp;
 
 //app settings
 app.engine('html', cons.swig)
@@ -65,20 +72,28 @@ app.get('/sign_up', (req,res) => {
     res.render('sign_up');
 })
 
-
 app.post('/upload-question',(req,res) => {
     console.log(req.body);
     const input_data = req.body;
+    var date = new Date(Date.now());
+    console.log(date);
     var infos = {
         Email: input_data.email,
         Name : input_data.name,
-        Question: input_data.question,
-        owned : NULL,
-        timePosted : 
-    }
-    res.send('your queries have been recieved');
+        Question: input_data.message,
+        owned : "NULL",
+        timePosted : date
+    };
+    db.collection('Posts').add(infos).then(()=>{
+        res.send('your queries have been recieved');
+    });
+    ;
 })
 
+
+app.get('/post',(req,res) => {
+    res.render('single-post-1');
+})
 
 //main program
 console.log('listen on port http://localhost:3000');
