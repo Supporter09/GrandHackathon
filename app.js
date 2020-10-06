@@ -36,10 +36,10 @@ const multer = require('multer');
 const upload = multer();
 // const firebase_timestamp = new firebase.firestore.Timestamp;
 
-//app settings
-app.engine('html', cons.swig)
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
 app.set('views','./views');
-app.set('view engine', 'html');
 app.use(express.static('public'));
 // for parsing application/json
 app.use(bodyParser.json()); 
@@ -91,8 +91,8 @@ app.post('/upload-question',(req,res) => {
 })
 
 
-app.get('/post',(req,res) => {
-    res.render('single-post-1');
+app.get('/post',(req,res,next) => {
+    res.render('single-post-1',);
 })
 
 //main program
