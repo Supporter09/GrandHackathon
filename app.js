@@ -1,5 +1,5 @@
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const firebase = require('firebase-admin');
 // import * from 'firebase';
 // const firebase = require('firebase/app');
@@ -20,6 +20,7 @@ var firebaseConfig = {
 //   firebase.analytics();
   const db = firebase.firestore();
   db.settings({ timestampsInSnapshots: true});
+  
 //   var storageRef = firebase.storage().ref();
 //firebase thing-yy;
 
@@ -100,5 +101,5 @@ app.get('/post',(req,res,next) => {
 })
 
 //main program
-console.log('listen on port http://localhost:3000');
+console.log('Hihi im listen on port http://localhost:3000');
 app.listen(port);

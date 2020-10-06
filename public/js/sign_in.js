@@ -23,6 +23,13 @@ firebase.auth().onAuthStateChanged(function(user) {
     //   var providerData = user.providerData;
       // ...
     //   window.location.href = "index.html"
+    var nav_list = document.querySelector("#main-menu")
+    let user_name = document.createElement("li");
+    let user_name_a = document.createElement("a");
+    user_name_a.setAttribute("id","user_name");
+    user_name_a.innerHTML = "Hello, "+ email + " !";
+    user_name.appendChild(user_name_a)
+    nav_list.appendChild(user_name);
     console.log("User Sign IN")
     } else {
       // User is signed out.
@@ -30,6 +37,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       var sign_up_btn = document.querySelector("#sign_up");
       sign_up_btn.innerHTML="Sign In";
       sign_up_btn.setAttribute('href',"./sign_in");
+      // var nav_list = document.querySelector("#main-menu");
+      var user_name = document.querySelector("#user_name");
+      user_name.remove()
+      // nav_list.removeChild(user_name)
+      
     }
   });
 

@@ -23,6 +23,13 @@
 
 	<link href="single-post-1/css/responsive.css" rel="stylesheet">
 
+	<!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
+
 </head>
 <body >
 
@@ -277,16 +284,16 @@
 							<div class="row">
 
 								<div class="col-sm-6">
-									<input type="text" aria-required="true" name="contact-form-name" class="form-control"
+									<input type="text" aria-required="true" name="contact-form-name" class="form-control" id="name"
 										placeholder="Enter your name" aria-invalid="true" required >
 								</div><!-- col-sm-6 -->
 								<div class="col-sm-6">
-									<input type="email" aria-required="true" name="contact-form-email" class="form-control"
+									<input type="email" aria-required="true" name="contact-form-email" class="form-control" id="email"
 										placeholder="Enter your email" aria-invalid="true" required>
 								</div><!-- col-sm-6 -->
 
 								<div class="col-sm-12">
-									<textarea name="contact-form-message" rows="2" class="text-area-messge form-control"
+									<textarea name="contact-form-message" rows="2" class="text-area-messge form-control" id="content"
 										placeholder="Enter your comment" aria-required="true" aria-invalid="false"></textarea >
 								</div><!-- col-sm-12 -->
 								<div class="col-sm-12">
@@ -459,5 +466,8 @@
 
 	<script src="common-js/scripts.js"></script>
 
+	<script src="js/firebase.js"></script>
+
+	<script src="js/comment.js"></script>
 </body>
 </html>
