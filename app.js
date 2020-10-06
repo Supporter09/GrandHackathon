@@ -1,5 +1,5 @@
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const firebase = require('firebase-admin');
 // import * from 'firebase';
 // const firebase = require('firebase/app');
@@ -55,7 +55,26 @@ app.use(express.static('public'));
 //routing
 
 app.get('/',(req,res) => {
-    res.render('index');
+    let data = new Array();
+    // res.render('index',{post : data});
+    db.collection('Posts')
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                query = {
+                    id: doc.id,
+                    data: doc.data()
+                };
+                data.push(query);
+            });
+        })
+        .catch(function(error) {
+            res.send(error);
+        });
+    console.log(data);
+    res.send('noted in console');
 })
 
 
