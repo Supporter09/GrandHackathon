@@ -358,3 +358,21 @@ footer .input-area .submit-btn{ position: absolute; top: 0; bottom: 0; right: 0;
 	border: 0; outline: 0; margin-right: 10px; opacity: .8; cursor: pointer; transition: all .2s; }
 
 
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -1,5 +1,5 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
 const firebase = require('firebase-admin');
 // import * from 'firebase';
 // const firebase = require('firebase/app');
@@ -70,6 +70,10 @@ app.get('/sign_in',(req,res) => {
 
 app.get('/sign_up', (req,res) => {
     res.render('sign_up');
+})
+
+app.get('/blank-static', (req,res) => {
+    res.render('blank-static');
 })
 
 app.post('/upload-question',(req,res) => {
