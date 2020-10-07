@@ -1,5 +1,5 @@
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const firebase = require('firebase-admin');
 // import * from 'firebase';
 // const firebase = require('firebase/app');
@@ -110,12 +110,21 @@ app.post('/upload-question',(req,res) => {
     db.collection('Posts').add(infos).then(()=>{
         res.send('your queries have been recieved');
     });
-    ;
-})
+});
 
-
-app.get('/post',(req,res,next) => {
-    res.render('single-post-1',);
+app.get('/post/:postID',(req,res) => {
+    let postID = req.params.postID;
+    db.collection('Posts')
+        .doc(postID)
+        .get()
+        .then((dat) => {
+            console.log(dat.data());
+            res.render('single-post-1', {data: dat.data()});
+        })
+        .catch((err) => {
+            console.log(err);
+            return res.end();
+        })
 })
 
 //main program

@@ -14,14 +14,14 @@
 
 	<!-- Stylesheets -->
 
-	<link href="common-css/bootstrap.css" rel="stylesheet">
+	<link href="../common-css/bootstrap.css" rel="stylesheet">
 
-	<link href="common-css/ionicons.css" rel="stylesheet">
+	<link href="../common-css/ionicons.css" rel="stylesheet">
 
 
-	<link href="single-post-1/css/styles.css" rel="stylesheet">
+	<link href="../single-post-1/css/styles.css" rel="stylesheet">
 
-	<link href="single-post-1/css/responsive.css" rel="stylesheet">
+	<link href="../single-post-1/css/responsive.css" rel="stylesheet">
 
 	<!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
@@ -36,12 +36,12 @@
 	<header>
 		<div class="container-fluid position-relative no-side-padding">
 
-			<a href="#" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
+			<a href="/" class="logo"><img src="../images/logo.png" alt="Logo Image"></a>
 
 			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
 
 			<ul class="main-menu visible-on-click" id="main-menu">
-				<li><a href="#">Home</a></li>
+				<li><a href="./">Home</a></li>
 				<li><a href="#">Categories</a></li>
 				<li><a href="#">Features</a></li>
 			</ul><!-- main-menu -->
@@ -59,7 +59,7 @@
 
 	<div class="slider">
 		<div class="display-table  center-text">
-			<h1 class="title display-table-cell"><b>DESIGN</b></h1>
+			<h1 class="title display-table-cell"><b><%= data.subject%></b></h1>
 		</div>
 	</div><!-- slider -->
 
@@ -77,45 +77,33 @@
 							<div class="post-info">
 
 								<div class="left-area">
-									<a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+									<a class="avatar" href="#"><img src="../images/avatar-1-120x120.jpg" alt="Profile Image"></a>
 								</div>
 
 								<div class="middle-area">
-									<a class="name" href="#"><b>Katy Liu</b></a>
-									<h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
+									<a class="name" href="#"><b><%= data.Name %> </b></a>
+									<h6 class="date">on <%= data.timePosted%></h6>
 								</div>
 
 							</div><!-- post-info -->
 
-							<h3 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the Most Complex Concepts in Physics?</b></a></h3>
+							<h3 class="title"><a href="#"><b><%= data.title%></b></a></h3>
 
-							<p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-							ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-							nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+							<p class="para"><%= data.question%></p>
 
-							<div class="post-image"><img src="images/blog-1-1000x600.jpg" alt="Blog Image"></div>
-
-							<p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-							ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-							nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-
-							<ul class="tags">
+							<!-- <ul class="tags">
 								<li><a href="#">Mnual</a></li>
 								<li><a href="#">Liberty</a></li>
 								<li><a href="#">Recommendation</a></li>
 								<li><a href="#">Inspiration</a></li>
-							</ul>
+							</ul> -->
 						</div><!-- blog-post-inner -->
 
 						<div class="post-icons-area">
 							<ul class="post-icons">
-								<li><a href="#"><i class="ion-heart"></i>57</a></li>
-								<li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-								<li><a href="#"><i class="ion-eye"></i>138</a></li>
+								<li><a href="#"><i class="ion-heart"></i><%= data.Likes%></a></li>
+								<li><a href="#"><i class="ion-chatbubble"></i><%=data.Comments.length%></a></li>
+								<!-- <li><a href="#"><i class="ion-eye"></i>138</a></li> -->
 							</ul>
 
 							<ul class="icons">
@@ -129,7 +117,7 @@
 						<div class="post-footer post-info">
 
 							<div class="left-area">
-								<a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+								<a class="avatar" href="#"><img src="../images/avatar-1-120x120.jpg" alt="Profile Image"></a>
 							</div>
 
 							<div class="middle-area">
@@ -166,7 +154,7 @@
 
 						</div><!-- subscribe-area -->
 
-						<div class="tag-area">
+						<!-- <div class="tag-area">
 
 							<h4 class="title"><b>TAG CLOUD</b></h4>
 							<ul>
@@ -178,7 +166,7 @@
 								<li><a href="#">Liberty</a></li>
 								<li><a href="#">Recomendation</a></li>
 								<li><a href="#">Interpritation</a></li>
-							</ul>
+							</ul> -->
 
 						</div><!-- subscribe-area -->
 
@@ -192,86 +180,6 @@
 	</section><!-- post-area -->
 
 
-	<section class="recomended-area section">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-lg-4 col-md-6">
-					<div class="card h-100">
-						<div class="single-post post-style-1">
-
-							<div class="blog-image"><img src="images/alex-lambley-205711.jpg" alt="Blog Image"></div>
-
-							<a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a>
-
-							<div class="blog-info">
-
-								<h4 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the Most Complex
-								Concepts in Physics?</b></a></h4>
-
-								<ul class="post-footer">
-									<li><a href="#"><i class="ion-heart"></i>57</a></li>
-									<li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-									<li><a href="#"><i class="ion-eye"></i>138</a></li>
-								</ul>
-
-							</div><!-- blog-info -->
-						</div><!-- single-post -->
-					</div><!-- card -->
-				</div><!-- col-md-6 col-sm-12 -->
-
-				<div class="col-lg-4 col-md-6">
-					<div class="card h-100">
-						<div class="single-post post-style-1">
-
-							<div class="blog-image"><img src="images/caroline-veronez-165944.jpg" alt="Blog Image"></div>
-
-							<a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a>
-
-							<div class="blog-info">
-								<h4 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the Most Complex
-									Concepts in Physics?</b></a></h4>
-
-								<ul class="post-footer">
-									<li><a href="#"><i class="ion-heart"></i>57</a></li>
-									<li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-									<li><a href="#"><i class="ion-eye"></i>138</a></li>
-								</ul>
-							</div><!-- blog-info -->
-
-						</div><!-- single-post -->
-
-					</div><!-- card -->
-				</div><!-- col-md-6 col-sm-12 -->
-
-				<div class="col-lg-4 col-md-6">
-					<div class="card h-100">
-						<div class="single-post post-style-1">
-
-							<div class="blog-image"><img src="images/marion-michele-330691.jpg" alt="Blog Image"></div>
-
-							<a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a>
-
-							<div class="blog-info">
-								<h4 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the Most Complex
-									Concepts in Physics?</b></a></h4>
-
-								<ul class="post-footer">
-									<li><a href="#"><i class="ion-heart"></i>57</a></li>
-									<li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-									<li><a href="#"><i class="ion-eye"></i>138</a></li>
-								</ul>
-							</div><!-- blog-info -->
-
-						</div><!-- single-post -->
-
-					</div><!-- card -->
-				</div><!-- col-md-6 col-sm-12 -->
-
-			</div><!-- row -->
-
-		</div><!-- container -->
-	</section>
 
 	<section class="comment-section">
 		<div class="container">
@@ -304,16 +212,16 @@
 						</form>
 					</div><!-- comment-form -->
 
-					<h4><b>COMMENTS(12)</b></h4>
+					<h4><b>COMMENTS(<%= data.Comments.length%>)</b></h4>
 
-					<div class="commnets-area">
+					<!-- <div class="commnets-area">
 
 						<div class="comment">
 
 							<div class="post-info">
 
 								<div class="left-area">
-									<a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+									<a class="avatar" href="#"><img src="../images/avatar-1-120x120.jpg" alt="Profile Image"></a>
 								</div>
 
 								<div class="middle-area">
@@ -325,13 +233,13 @@
 									<h5 class="reply-btn" ><a href="#"><b>REPLY</b></a></h5>
 								</div>
 
-							</div><!-- post-info -->
+							</div>post-info
 
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
 								ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
 								Ut enim ad minim veniam</p>
 
-						</div>
+						</div> 
 
 						<div class="comment">
 							<h5 class="reply-for">Reply for <a href="#"><b>Katy Lui</b></a></h5>
@@ -339,7 +247,7 @@
 							<div class="post-info">
 
 								<div class="left-area">
-									<a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+									<a class="avatar" href="#"><img src="../images/avatar-1-120x120.jpg" alt="Profile Image"></a>
 								</div>
 
 								<div class="middle-area">
@@ -351,7 +259,7 @@
 									<h5 class="reply-btn" ><a href="#"><b>REPLY</b></a></h5>
 								</div>
 
-							</div><!-- post-info -->
+							</div> post-info
 
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
 								ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
@@ -359,8 +267,8 @@
 
 						</div>
 
-					</div><!-- commnets-area -->
-
+					</div> commnets-area -->
+					<% data.Comments.forEach(() =>{ %> 
 					<div class="commnets-area ">
 
 						<div class="comment">
@@ -368,7 +276,7 @@
 							<div class="post-info">
 
 								<div class="left-area">
-									<a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+									<a class="avatar" href="#"><img src="../images/avatar-1-120x120.jpg" alt="Profile Image"></a>
 								</div>
 
 								<div class="middle-area">
@@ -389,8 +297,8 @@
 						</div>
 
 					</div><!-- commnets-area -->
-
-					<a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</a>
+					<% }); %> 
+					<!-- <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</a> -->
 
 				</div><!-- col-lg-8 col-md-12 -->
 
@@ -407,7 +315,7 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="footer-section">
 
-						<a class="logo" href="#"><img src="images/logo.png" alt="Logo Image"></a>
+						<a class="logo" href="#"><img src="../images/logo.png" alt="Logo Image"></a>
 						<p class="copyright">Bona @ 2017. All rights reserved.</p>
 						<p class="copyright">Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
 						<ul class="icons">
@@ -458,16 +366,16 @@
 
 	<!-- SCIPTS -->
 
-	<script src="common-js/jquery-3.1.1.min.js"></script>
+	<script src="../common-js/jquery-3.1.1.min.js"></script>
 
-	<script src="common-js/tether.min.js"></script>
+	<script src="../common-js/tether.min.js"></script>
 
-	<script src="common-js/bootstrap.js"></script>
+	<script src="../common-js/bootstrap.js"></script>
 
-	<script src="common-js/scripts.js"></script>
+	<script src="../common-js/scripts.js"></script>
 
-	<script src="js/firebase.js"></script>
+	<script src="../js/firebase.js"></script>
 
-	<script src="js/comment.js"></script>
+	<script src="../js/comment.js"></script>
 </body>
 </html>
