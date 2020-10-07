@@ -101,7 +101,7 @@ app.post('/upload-question',(req,res) => {
     var date = new Date(Date.now());
     console.log(date);
     var infos = {
-        Comments:[{Content:"null",Email:"null",Likes:0,Name:"Duc Bui",Time:"some thing here"}],
+        Comments:[],
         title:input_data.title,
         Email: input_data.email,
         Name : input_data.name,
@@ -130,8 +130,28 @@ app.get('/post/:postID',(req,res) => {
             console.log(err);
             return res.end();
         })
+    
+        
 })
 
+app.post('/post/:postID',(req,res) => {
+    let postID = req.params.postID;
+    const input_data = req.body;
+    var date = new Date(Date.now());
+    const new_comment = {
+        Name: input_data.contact_form_name,
+        Email: input_data.contact_form_email,
+        Likes:0,
+        Content: input_data.contact_form_message,
+        Time:date.toGMTString()
+    }
+    const comments_array = db.collection('Posts').doc(postID).update({
+        Comments: firebase.firestore.FieldValue.arrayUnion(new_comment)
+    }).then(
+        
+    );
+    // const add_new_comment = await comments_array.update() 
+})
 //main program
 console.log('listening on port http://localhost:3000');
 app.listen(port);

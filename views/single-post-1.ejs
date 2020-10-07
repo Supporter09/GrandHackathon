@@ -193,16 +193,16 @@
 							<div class="row">
 
 								<div class="col-sm-6">
-									<input type="text" aria-required="true" name="contact-form-name" class="form-control" id="name"
+									<input type="text" aria-required="true" onfocus="this.value=''" name="contact_form_name" class="form-control" id="name"
 										placeholder="Enter your name" aria-invalid="true" required >
 								</div><!-- col-sm-6 -->
 								<div class="col-sm-6">
-									<input type="email" aria-required="true" name="contact-form-email" class="form-control" id="email"
+									<input type="email" aria-required="true" onfocus="this.value=''" name="contact_form_email" class="form-control" id="email"
 										placeholder="Enter your email" aria-invalid="true" required>
 								</div><!-- col-sm-6 -->
 
 								<div class="col-sm-12">
-									<textarea name="contact-form-message" rows="2" class="text-area-messge form-control" id="content"
+									<textarea name="contact_form_message" onfocus="this.value=''" rows="2" class="text-area-messge form-control" id="content"
 										placeholder="Enter your comment" aria-required="true" aria-invalid="false"></textarea >
 								</div><!-- col-sm-12 -->
 								<div class="col-sm-12">
@@ -269,7 +269,7 @@
 						</div>
 
 					</div> commnets-area -->
-					<% data.Comments.forEach(() =>{ %> 
+					<% data.Comments.forEach((single_data) =>{ %> 
 					<div class="commnets-area ">
 
 						<div class="comment">
@@ -281,8 +281,8 @@
 								</div>
 
 								<div class="middle-area">
-									<a class="name" href="#"><b>Katy Liu</b></a>
-									<h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
+									<a class="name" href="#"><b><%= single_data.Name%></b></a>
+									<h6 class="date">on <%= single_data.Time%></h6>
 								</div>
 
 								<div class="right-area">
@@ -291,9 +291,7 @@
 
 							</div><!-- post-info -->
 
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-								ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-								Ut enim ad minim veniam</p>
+							<p><%= single_data.Content%></p>
 
 						</div>
 
@@ -375,9 +373,9 @@
 
 	<script src="../common-js/scripts.js"></script>
 
-	<script src="../js/firebase.js"></script>
+	<script src="./js/firebase.js"></script>
 
-	<script src="../js/comment.js"></script>
+	<script src="./js/comment.js"></script>
 
 	<script src="./js/sign_in.js"></script>
 
