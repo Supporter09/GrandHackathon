@@ -25,6 +25,7 @@
 	<link href="front-page-category/css/styles.css" rel="stylesheet">
 
 	<link href="front-page-category/css/responsive.css" rel="stylesheet">
+	<script src="./common-js/jquery-3.1.1.min.js"></script>
 
 	<!-- FIREBASE -->
 	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
@@ -78,10 +79,10 @@
 						<input id="myInput" type="text" name="search" placeholder="Search..">
 					</form>
 				</li>
-				<li><a href="./">Home</a></li>
-				<li><a href="./upload-question">Ask a question</a></li>
-				<li><a href="./blank-static">About Us</a></li>
-				<li><a href="./sign_up" id="sign_up">Sign Up</a></li>
+				<li><a href="/">Home</a></li>
+				<li><a href="/upload-question">Ask a question</a></li>
+				<li><a href="/blank-static">About Us</a></li>
+				<li><a href="/sign_up" id="sign_up">Sign Up</a></li>
 				
 			</ul><!-- main-menu -->
 
@@ -193,9 +194,9 @@
 	<section class="blog-area section" id="ourHolder">
 		<div class="item container">
 
-			<div class="row">
+			<div class="row" id = "content-container">
 		<%post.forEach((data) => { %>
-				<div class="col-lg-4 col-md-6" data-subject = "<%=data.subject%>">
+				<div class="col-lg-4 col-md-6 <%=data.subject%>">
 					<div class="card h-100">
 						<div class="single-post post-style-1">
 
@@ -300,6 +301,8 @@
 	<script src="./js/sign_in.js"></script>
 
 	<script src="./js/render_question.js"></script>
+
+	<script src="./single-post-1/js/searchBar.js"></script>
 
 	<!-- <script src="./js/sign_up.js"></script> -->
 
