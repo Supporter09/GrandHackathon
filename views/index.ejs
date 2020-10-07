@@ -37,6 +37,16 @@
 
 <body>
 
+	<script>$(document).ready(function () {
+		$("#myInput").on("keyup", function () {
+			var value = $(this).val().toLowerCase();
+			$("#blog-area section").filter(function () {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
+	</script>
+
 	<header>
 		<div class="container-fluid position-relative no-side-padding">
 
@@ -45,11 +55,11 @@
 			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
 
 			<ul class="main-menu visible-on-click" id="main-menu">
-				<!-- <li>
+				<li>
 					<form>
-						<input type="text" name="search" placeholder="Search..">
+						<input id="myInput" type="text" name="search" placeholder="Search..">
 					</form>
-				</li> -->
+				</li>
 				<li><a href="./">Home</a></li>
 				<li><a href="./upload-question">Ask a question</a></li>
 				<li><a href="./blank-static">About Us</a></li>

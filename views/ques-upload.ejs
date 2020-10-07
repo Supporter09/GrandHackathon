@@ -23,6 +23,10 @@
 	<!--===============================================================================================-->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+        rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" />
 
 	<!-- Stylesheets -->
 
@@ -35,12 +39,23 @@
 
 	<link href="./ContactFormv2/css/responsive.css" rel="stylesheet">
 
-	 <!-- FIREBASE -->
-	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
-	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
-	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
-	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
-	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
+	<link href="common-css/bootstrap.css" rel="stylesheet">
+
+	<link href="common-css/swiper.css" rel="stylesheet">
+
+	<link href="common-css/ionicons.css" rel="stylesheet">
+
+
+	<link href="front-page-category/css/styles.css" rel="stylesheet">
+
+	<link href="front-page-category/css/responsive.css" rel="stylesheet">
+
+	<!-- FIREBASE -->
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
 </head>
 
 <body>
@@ -97,11 +112,21 @@
 						<span class="focus-input2" data-placeholder="MESSAGE"></span>
 					</div>
 
+					<!-- <div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+						</div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01"
+								aria-describedby="inputGroupFileAddon01">
+							<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						</div>
+					</div> -->
 
 					<!-- <div class="dropdown">
 						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
 						<span class="caret"></span></button>-->
-					<ul>
+					<ul style="text-align: center;">
 						<li><input type="radio" name="subject" value="Math">Math</input></li>
 						<li><input type="radio" name="subject" value="Physics">Physics</input></li>
 						<li><input type="radio" name="subject" value="Literature">Literature</input></li>
@@ -121,6 +146,64 @@
 			</div>
 		</div>
 	</div>
+
+	<footer>
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-section">
+
+						<a class="logo" href="#"><img src="images/logo.png" alt="Logo Image"></a>
+						<p class="copyright">Bona @ 2020. All rights reserved.</p>
+						<p class="copyright">Designed by <a href="https://colorlib.com"
+								target="_blank">GrandHackathon</a></p>
+						<ul class="icons">
+							<li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+						</ul>
+
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-section">
+						<h4 class="title"><b>CATAGORIES</b></h4>
+						<ul>
+							<li><a href="#">MATH</a></li>
+							<li><a href="#">CHEMISTRY</a></li>
+							<li><a href="#">PHYSICS</a></li>
+						</ul>
+						<ul>
+							<li><a href="#">LITERATURE</a></li>
+							<li><a href="#">LANGUAGE</a></li>
+							<li><a href="#">ELSE</a></li>
+						</ul>
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-section">
+
+						<h4 class="title"><b>SUBSCRIBE</b></h4>
+						<div class="input-area">
+							<form>
+								<input class="email-input" type="text" placeholder="Enter your email">
+								<button class="submit-btn" type="submit"><i
+										class="icon ion-ios-email-outline"></i></button>
+							</form>
+						</div>
+
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+			</div><!-- row -->
+		</div><!-- container -->
+	</footer>
 
 
 
