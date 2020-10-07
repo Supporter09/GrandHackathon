@@ -34,6 +34,13 @@
 	<link href="./ContactFormv2/css/styles.css" rel="stylesheet">
 
 	<link href="./ContactFormv2/css/responsive.css" rel="stylesheet">
+
+	 <!-- FIREBASE -->
+	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+	 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
 </head>
 
 <body>
@@ -80,10 +87,17 @@
 						<span class="focus-input2" data-placeholder="EMAIL"></span>
 					</div>
 
+					<div class="wrap-input2 validate-input" data-validate="Title is required">
+						<input class="input2" type="text" name="title">
+						<span class="focus-input2" data-placeholder="TITLE"></span>
+					</div>
+
 					<div class="wrap-input2 validate-input" data-validate="Message is required">
 						<textarea class="input2" name="message"></textarea>
 						<span class="focus-input2" data-placeholder="MESSAGE"></span>
 					</div>
+
+
 					<!-- <div class="dropdown">
 						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
 						<span class="caret"></span></button>-->
@@ -131,6 +145,7 @@
 		gtag('config', 'UA-23581568-13');
 	</script>
 
+	<script src="./js/firebase.js"></script>
 	<script src="./js/sign_in.js"></script>
 
 	<script src="./js/render_question.js"></script>
