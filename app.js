@@ -55,7 +55,7 @@ app.use(express.static('public'));
 //routing
 
 app.get('/',(req,res) => {
-    let data = new Array();
+    let data = [];
     // res.render('index',{post : data});
     db.collection('Posts')
         .get()
@@ -63,18 +63,17 @@ app.get('/',(req,res) => {
             querySnapshot.forEach(function(doc) {
                 // doc.data() is never undefined for query doc snapshots
                 // console.log(doc.id, " => ", doc.data());
-                query = {
+                var query = {
                     id: doc.id,
                     data: doc.data()
                 };
                 data.push(query);
             });
         })
-        .catch(function(error) {
-            res.send(error);
-        });
-    console.log(data);
-    res.send('noted in console');
+        .then(()=>{res.render('index',{post: data})})
+        .catch(function(error){
+            console.log(error);
+        })
 })
 
 
@@ -119,5 +118,5 @@ app.get('/post',(req,res,next) => {
 })
 
 //main program
-console.log('listen on port http://localhost:3000');
+console.log('listening on port http://localhost:3000');
 app.listen(port);
