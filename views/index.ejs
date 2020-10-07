@@ -37,12 +37,30 @@
 
 <body>
 
-	<script>$(document).ready(function () {
-		$("#myInput").on("keyup", function () {
-			var value = $(this).val().toLowerCase();
-			$("#blog-area section").filter(function () {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
+	<script>
+	// $(document).ready(function () {
+	// 	$("#myInput").on("keyup", function () {
+	// 		var value = $(this).val().toLowerCase();
+	// 		$("#blog-area section").filter(function () {
+	// 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	// 		});
+	// 	});
+	// });
+
+	$(document).ready(function() {
+		$('#filterOption div a').click(function() {
+			var ourClass = $(this).attr('class');
+			$('#filterOption li').removeClass('active');
+			$(this).parent().addClass('active');
+
+			if(ourClass == 'all') {
+				$('#ourHolder').children('div.item').show();
+			}
+			else {
+				$('#ourHolder').children('div:not(.' + ourClass + ')').hide();
+				$('#ourHolder').children('div.' + ourClass).show();
+			}
+			return false;
 		});
 	});
 	</script>
@@ -70,7 +88,7 @@
 		</div><!-- conatiner -->
 	</header>
 
-	<div class="main-slider">
+	<div class="main-slider" id="filterOption">
 		<div class="swiper-container position-static" data-slide-effect="slide" data-autoheight="false"
 			data-swiper-speed="500" data-swiper-autoplay="10000" data-swiper-margin="0" data-swiper-slides-per-view="4"
 			data-swiper-breakpoints="true" data-swiper-loop="true">
@@ -172,8 +190,8 @@
 
 	</div><!-- slider -->
 
-	<section class="blog-area section">
-		<div class="container">
+	<section class="blog-area section" id="ourHolder">
+		<div class="item container">
 
 			<div class="row">
 		<%post.forEach((data) => { %>
