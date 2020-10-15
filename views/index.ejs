@@ -1,0 +1,312 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title>TITLE</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+
+
+	<!-- Font -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+
+	<link href="common-css/bootstrap.css" rel="stylesheet">
+
+	<link href="common-css/swiper.css" rel="stylesheet">
+
+	<link href="common-css/ionicons.css" rel="stylesheet">
+
+
+	<link href="front-page-category/css/styles.css" rel="stylesheet">
+
+	<link href="front-page-category/css/responsive.css" rel="stylesheet">
+	<script src="./common-js/jquery-3.1.1.min.js"></script>
+
+	<!-- FIREBASE -->
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
+
+</head>
+
+<body>
+
+	<script>
+	// $(document).ready(function () {
+	// 	$("#myInput").on("keyup", function () {
+	// 		var value = $(this).val().toLowerCase();
+	// 		$("#blog-area section").filter(function () {
+	// 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	// 		});
+	// 	});
+	// });
+
+	$(document).ready(function() {
+		$('#filterOption div a').click(function() {
+			var ourClass = $(this).attr('class');
+			$('#filterOption li').removeClass('active');
+			$(this).parent().addClass('active');
+
+			if(ourClass == 'all') {
+				$('#ourHolder').children('div.item').show();
+			}
+			else {
+				$('#ourHolder').children('div:not(.' + ourClass + ')').hide();
+				$('#ourHolder').children('div.' + ourClass).show();
+			}
+			return false;
+		});
+	});
+	</script>
+
+	<header>
+		<div class="container-fluid position-relative no-side-padding">
+
+			<a href="./" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
+
+			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+			<ul class="main-menu visible-on-click" id="main-menu">
+				<li>
+					<form>
+						<input id="myInput" type="text" name="search" placeholder="Search..">
+					</form>
+				</li>
+				<li><a href="/">Home</a></li>
+				<li><a href="/upload-question">Ask a question</a></li>
+				<li><a href="/blank-static">About Us</a></li>
+				<li><a href="/sign_up" id="sign_up">Sign Up</a></li>
+				
+			</ul><!-- main-menu -->
+
+		</div><!-- conatiner -->
+	</header>
+
+	<div class="main-slider" id="filterOption">
+		<div class="swiper-container position-static" data-slide-effect="slide" data-autoheight="false"
+			data-swiper-speed="500" data-swiper-autoplay="10000" data-swiper-margin="0" data-swiper-slides-per-view="4"
+			data-swiper-breakpoints="true" data-swiper-loop="true">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide">
+					<a class="slider-category" href="#">
+						<div class="blog-image"><img src="./images/math.jpg" alt="Blog Image"></div>
+
+						<div class="category">
+							<div class="display-table center-text">
+								<div class="display-table-cell">
+									<h3><b>MATH</b></h3>
+								</div>
+							</div>
+						</div>
+
+					</a>
+				</div><!-- swiper-slide -->
+
+				<div class="swiper-slide">
+					<a class="slider-category" href="#">
+						<div class="blog-image"><img src="./images/chemistry.jpg" alt="Blog Image"></div>
+
+						<div class="category">
+							<div class="display-table center-text">
+								<div class="display-table-cell">
+									<h3><b>CHEMISTRY</b></h3>
+								</div>
+							</div>
+						</div>
+
+					</a>
+				</div><!-- swiper-slide -->
+
+				<div class="swiper-slide">
+					<a class="slider-category" href="#">
+						<div class="blog-image"><img src="images/physic1.jpg" alt="Blog Image"></div>
+
+						<div class="category">
+							<div class="display-table center-text">
+								<div class="display-table-cell">
+									<h3><b>PHYSICS</b></h3>
+								</div>
+							</div>
+						</div>
+
+					</a>
+				</div><!-- swiper-slide -->
+
+				<div class="swiper-slide">
+					<a class="slider-category" href="#">
+						<div class="blog-image"><img src="images/literature1.jpg" alt="Blog Image"></div>
+
+						<div class="category">
+							<div class="display-table center-text">
+								<div class="display-table-cell">
+									<h3><b>LITERATURE</b></h3>
+								</div>
+							</div>
+						</div>
+
+					</a>
+				</div><!-- swiper-slide -->
+
+				<div class="swiper-slide">
+					<a class="slider-category" href="#">
+						<div class="blog-image"><img src="images/language1.jpg" alt="Blog Image"></div>
+
+						<div class="category">
+							<div class="display-table center-text">
+								<div class="display-table-cell">
+									<h3><b>LANGUAGE</b></h3>
+								</div>
+							</div>
+						</div>
+
+					</a>
+				</div><!-- swiper-slide -->
+
+				<div class="swiper-slide">
+					<a class="slider-category" href="#">
+						<div class="blog-image"><img src="images/else.jpg" alt="Blog Image"></div>
+
+						<div class="category">
+							<div class="display-table center-text">
+								<div class="display-table-cell">
+									<h3><b>ELSE</b></h3>
+								</div>
+							</div>
+						</div>
+
+					</a>
+				</div><!-- swiper-slide -->
+
+			</div><!-- swiper-wrapper -->
+
+		</div><!-- swiper-container -->
+
+	</div><!-- slider -->
+
+	<section class="blog-area section" id="ourHolder">
+		<div class="item container">
+
+			<div class="row" id = "content-container">
+		<%post.forEach((data) => { %>
+				<div class="col-lg-4 col-md-6 <%=data.subject%>">
+					<div class="card h-100">
+						<div class="single-post post-style-1">
+
+							<!-- <div class="blog-image"><img src="images/marion-michele-330691.jpg" alt="Blog Image"></div>
+
+							<a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a> -->
+
+							<div class="blog-info">
+
+								<h4 class="title"><a href="/post/<%= data.id %>" ><b><%= data.data.title%></b></a></h4>
+
+								<ul class="post-footer">
+									<li><a href="#"><i class="ion-heart"></i><%= data.data.Likes%></a></li>
+									<li><a href="#"><i class="ion-chatbubble"></i>21</a></li>
+								</ul>
+
+							</div><!-- blog-info -->
+						</div><!-- single-post -->
+					</div><!-- card -->
+				</div><!-- col-lg-4 col-md-6 -->
+				<%}); %>
+			</div><!-- row -->
+			<!-- <a class="load-more-btn" href="#"><b>LOAD MORE</b></a> -->
+
+		</div><!-- container -->
+	</section><!-- section -->
+
+
+	<footer>
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-section">
+
+						<a class="logo" href="#"><img src="images/logo.png" alt="Logo Image"></a>
+						<p class="copyright">Bona @ 2020. All rights reserved.</p>
+						<p class="copyright">Designed by <a href="https://colorlib.com"
+								target="_blank">GrandHackathon</a></p>
+						<ul class="icons">
+							<li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+						</ul>
+
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-section">
+						<h4 class="title"><b>CATAGORIES</b></h4>
+						<ul>
+							<li><a href="#">MATH</a></li>
+							<li><a href="#">CHEMISTRY</a></li>
+							<li><a href="#">PHYSICS</a></li>
+						</ul>
+						<ul>
+							<li><a href="#">LITERATURE</a></li>
+							<li><a href="#">LANGUAGE</a></li>
+							<li><a href="#">ELSE</a></li>
+						</ul>
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-section">
+
+						<h4 class="title"><b>SUBSCRIBE</b></h4>
+						<div class="input-area">
+							<form>
+								<input class="email-input" type="text" placeholder="Enter your email">
+								<button class="submit-btn" type="submit"><i
+										class="icon ion-ios-email-outline"></i></button>
+							</form>
+						</div>
+
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+			</div><!-- row -->
+		</div><!-- container -->
+	</footer>
+
+
+	<!-- SCIPTS -->
+
+	<script src="common-js/jquery-3.1.1.min.js"></script>
+
+	<script src="common-js/tether.min.js"></script>
+
+	<script src="common-js/bootstrap.js"></script>
+
+	<script src="common-js/swiper.js"></script>
+
+	<script src="common-js/scripts.js"></script>
+
+	<script src="./js/firebase.js"></script>
+
+	<script src="./js/sign_in.js"></script>
+
+	<script src="./js/render_question.js"></script>
+
+	<script src="./single-post-1/js/searchBar.js"></script>
+
+	<!-- <script src="./js/sign_up.js"></script> -->
+
+
+</body>
+
+</html>
