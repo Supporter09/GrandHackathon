@@ -113,12 +113,9 @@ app.post('/upload-question',(req,res) => {
         likes : 0
     };
     db.collection('Posts').add(infos).then(()=>{
-        res.send('your queries have been recieved');
-    }).then(
-        res.redirect('./');
-        return res.end();
-    );
-    
+        return res.render('redirect', {mess : 'Your post has been submitted successfully'});
+    })
+
 });
 
 app.get('/post',(req,res) => {
