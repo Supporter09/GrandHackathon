@@ -100,6 +100,7 @@ app.post('/upload-question',(req,res) => {
     const input_data = req.body;
     var date = new Date(Date.now());
     console.log(date);
+    console.log(req.body);
     var infos = {
         comments:[],
         title:input_data.title,
@@ -107,13 +108,15 @@ app.post('/upload-question',(req,res) => {
         name : input_data.name,
         question: input_data.message,
         owned : "NULL",
+        subject : input_data.subject,
         timePosted : date,
         likes : 0
     };
     db.collection('Posts').add(infos).then(()=>{
         res.send('your queries have been recieved');
     }).then(
-        res.redirect('./')
+        res.redirect('./');
+        return res.end();
     );
     
 });
