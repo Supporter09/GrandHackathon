@@ -1,35 +1,40 @@
-// Prepare for render comments
+// window.onload = () => {
+//   db.collection("Posts").orderBy('Time').onSnapshot((snapshot) => {
+//     let changes = snapshot.docChanges();
+//     changes.forEach((change) => {
+//       if (change.type == "added") {
+//         renderBlog(change.doc);
+//       } else if (change.type == "removed") {
+//         let li = blog_post_list.querySelector("[data-id=" + change.doc.id + "]");
+//         blog_post_list.removeChild(li);
+//       }
+//     });
+//   });
 
-db.collection("Posts").orderBy('Time').onSnapshot((snapshot) => {
-    let changes = snapshot.docChanges();
-    changes.forEach((change) => {
-      if (change.type == "added") {
-        renderBlog(change.doc);
-      } else if (change.type == "removed") {
-        let li = blog_post_list.querySelector("[data-id=" + change.doc.id + "]");
-        blog_post_list.removeChild(li);
-      }
-    });
-  });
 
+// // Post Comment
 
-// Post Comment
+// let post_comment = $('#comment-form');
 
-let post_comment = document.querySelector("#form-submit");
+// $('#comment').submit((event)=>{
+//     event.preventDefault();
+//     let name = document.querySelector("#name");
+//     let email =document.querySelector("email");
+//     let content = document.querySelector("#content");
+//     var date = new Date(Date.now());
+//     db.collection('Posts').add({
+//       name: name.value,
+//       email: email.value,
+//       likes:0,
+//       content : content.value,
+//       time : date,
+//       // id:specific_id
+//     }).then(() => {
+//       alert('Posted!')
+//     window.location.reload();
+//     })
+    
+// })
+// }
+// // Prepare for render comments
 
-post_comment.addEventListener('click',()=>{
-    let name = document.querySelector("#name");
-    let email =document.querySelector("email");
-    let content = document.querySelector("#content");
-    var date = new Date(Date.now());
-    db.collection('Posts').add({
-      Name: name.value,
-      Email: email.value,
-      Likes:0,
-      Content : content.value,
-      Time : date,
-      id:specific_id
-    });
-    alert('Posted!')
-
-})

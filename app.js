@@ -52,6 +52,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // for parsing multipart/form-data
 app.use(upload.array());
 app.use(express.static('public'));
+app.use("/", express.Router());
 
 //routing
 
@@ -112,8 +113,8 @@ app.post('/upload-question',(req,res) => {
         timePosted : date,
         likes : 0
     };
-    db.collection('Posts').add(infos).then(()=>{
-        return res.render('redirect', {mess : 'Your post has been submitted successfully'});
+    db.collection('Posts').add(infos).then(() => {
+        return res.render('redirect', {mess : 'Your post has been submitted successfully', link : "./"});
     })
 
 });
@@ -125,7 +126,12 @@ app.get('/post',(req,res) => {
         .doc(postID)
         .get()
         .then((dat) => {
-            console.log(dat.data());
+            // console.log(dat.data());
+            var data = dat.data();
+            data.comments = data.comments.sort((a,b) => {
+                return !(new Date(b.time) - new Date(a.time));
+            })
+    
             res.render('single-post-1', {data: dat.data()});
         })
         .catch((err) => {
@@ -135,7 +141,7 @@ app.get('/post',(req,res) => {
 })
 
 app.post('/post',(req,res) => {
-    let postID = req.params.postID;
+    let postID = req.query.id;
     const input_data = req.body;
     var date = new Date(Date.now());
     const new_comment = {
@@ -145,11 +151,14 @@ app.post('/post',(req,res) => {
         content: input_data.contact_form_message,
         time:date.toGMTString()
     }
-    const comments_array = db.collection('Posts').doc(postID).update({
+    const comments_array = db.collection('Posts').doc(`${postID}`).update({
         comments: firebase.firestore.FieldValue.arrayUnion(new_comment)
-    }).then(
-    
-    );
+    }).then( () => {
+        return res.render('redirect',{
+            mess: "Your comment has been posted succesfully",
+            link:  `./post?id=${postID}`
+        })
+    });
     // const add_new_comment = await comments_array.update()
 })
 //main program

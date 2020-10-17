@@ -5,10 +5,12 @@
     <title>Redirecting...</title>
 </head>
 <body>
-    <h1><%= mess%>></h1>
+    <h1><%= mess%></h1>
+    <% var li = link; %> 
     <script>
         window.onload = () => {
-        	window.location.href = "./";
+            var li = `<%= li %>` ;
+        	window.location.href = `${li}`;
         }
     </script>
 </body>
