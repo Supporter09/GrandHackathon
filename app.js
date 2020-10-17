@@ -1,12 +1,10 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const firebase = require('firebase-admin');
-
 // import * from 'firebase';
 // const firebase = require('firebase/app');
 // require('firebase/database');
 // require('firebase/analytics');
-
 var firebaseConfig = {
     apiKey: "AIzaSyCZ67Ve4ozcjpLZYsE_zxDSL1JkCZrq2aY",
     authDomain: "grandhackathon.firebaseapp.com",
@@ -22,7 +20,8 @@ var firebaseConfig = {
 //   firebase.analytics();
   const db = firebase.firestore();
   db.settings({ timestampsInSnapshots: true});
- 
+  
+//   var storageRef = firebase.storage().ref();
 //firebase thing-yy;
 
 
@@ -44,14 +43,14 @@ app.set('view engine', 'ejs');
 app.set('views','./views');
 app.use(express.static('public'));
 // for parsing application/json
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 
 // for parsing application/xwww-
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 //form-urlencoded
 
 // for parsing multipart/form-data
-app.use(upload.array()); 
+app.use(upload.array());
 app.use(express.static('public'));
 
 //routing
@@ -102,26 +101,26 @@ app.post('/upload-question',(req,res) => {
     var date = new Date(Date.now());
     console.log(date);
     var infos = {
-        Comments:[],
+        comments:[],
         title:input_data.title,
-        Email: input_data.email,
-        Name : input_data.name,
-        Question: input_data.message,
+        email: input_data.email,
+        name : input_data.name,
+        question: input_data.message,
         owned : "NULL",
-        timePosted : date
+        timePosted : date,
+        likes : 0
     };
     db.collection('Posts').add(infos).then(()=>{
         res.send('your queries have been recieved');
     }).then(
         res.redirect('./')
     );
-
-    
     
 });
 
-app.get('/post/:postID',(req,res) => {
-    let postID = req.params.postID;
+app.get('/post',(req,res) => {
+    let postID = req.query.id;
+    console.log(postID);
     db.collection('Posts')
         .doc(postID)
         .get()
@@ -133,27 +132,25 @@ app.get('/post/:postID',(req,res) => {
             console.log(err);
             return res.end();
         })
-    
-        
 })
 
-app.post('/post/:postID',(req,res) => {
+app.post('/post',(req,res) => {
     let postID = req.params.postID;
     const input_data = req.body;
     var date = new Date(Date.now());
     const new_comment = {
-        Name: input_data.contact_form_name,
-        Email: input_data.contact_form_email,
-        Likes:0,
-        Content: input_data.contact_form_message,
-        Time:date.toGMTString()
+        name: input_data.contact_form_name,
+        email: input_data.contact_form_email,
+        likes:0,
+        content: input_data.contact_form_message,
+        time:date.toGMTString()
     }
     const comments_array = db.collection('Posts').doc(postID).update({
-        Comments: firebase.firestore.FieldValue.arrayUnion(new_comment)
+        comments: firebase.firestore.FieldValue.arrayUnion(new_comment)
     }).then(
-
+    
     );
-    // const add_new_comment = await comments_array.update() 
+    // const add_new_comment = await comments_array.update()
 })
 //main program
 console.log('listening on port http://localhost:3000');
