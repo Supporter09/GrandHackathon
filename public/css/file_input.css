@@ -1,0 +1,49 @@
+.file-container{
+	width: 200px;
+	margin: 50px auto;
+	font-family: sans-serif;
+}
+
+.file-label{
+	display: block;
+	max-width: 200px;
+    margin: 0 auto 15px;
+	text-align: center;
+    word-wrap: break-word;
+	color: #1a4756;
+}
+
+.hidden, #uploadImg:not(.hidden) + label{
+	display: none;
+}
+
+#file{
+	display: none;
+  	margin: 0 auto;
+}
+
+#upload{
+	display: block;
+	padding: 10px 25px;
+	border: 0;
+	margin: 0 auto;
+	font-size: 15px;
+	letter-spacing: 0.05em;
+	cursor: pointer;
+	background: #216e69;
+	color: #fff;
+	outline: none;
+	transition: .3s ease-in-out;
+	&:hover, &:focus{
+		background: #1AA39A;
+	}
+	&:active{
+		background: #13D4C8;
+		transition: .1s ease-in-out;
+	}
+}
+
+img{
+	display: block;
+	margin: 0 auto 15px;
+}

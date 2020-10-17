@@ -49,6 +49,7 @@
 	<link href="front-page-category/css/styles.css" rel="stylesheet">
 
 	<link href="front-page-category/css/responsive.css" rel="stylesheet">
+	<link href="./css/file_input.css" rel="stylesheet">
 
 	<!-- FIREBASE -->
 	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
@@ -112,27 +113,27 @@
 						<span class="focus-input2" data-placeholder="MESSAGE"></span>
 					</div>
 
-					<!-- <div class="input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-						</div>
-						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="inputGroupFile01"
-								aria-describedby="inputGroupFileAddon01">
-							<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-						</div>
-					</div> -->
+					<ul style="text-align: center;display: flex; justify-content: space-around;font-family: Poppins-Medium;margin-bottom: 10px;">
+						<li><input type="radio" name="subject" value="Math"> Math</input></li>
+						<li><input type="radio" name="subject" value="Physics"> Physics</input></li>
+						<li><input type="radio" name="subject" value="Literature"> Literature</input></li>
+						<li><input type="radio" name="subject" value="Language"> Language</input></li>
+						<li><input type="radio" name="subject" value="Else"> Else</input></li>
+					</ul>
 
+				<!-- Image Input -->
+					<div class="file-container">
+						<label class="file-label" name="images" for="input">Please upload a picture !</label>
+					
+						<div class="input">
+							<input name="input" id="file" type="file">
+						</div>
+					</div>
+				<!-- Image Input -->
 					<!-- <div class="dropdown">
 						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
 						<span class="caret"></span></button>-->
-					<ul style="text-align: center;">
-						<li><input type="radio" name="subject" value="Math">Math</input></li>
-						<li><input type="radio" name="subject" value="Physics">Physics</input></li>
-						<li><input type="radio" name="subject" value="Literature">Literature</input></li>
-						<li><input type="radio" name="subject" value="Language">Language</input></li>
-						<li><input type="radio" name="subject" value="Else">Else</input></li>
-					</ul>
+					
 					<!-- </div> -->
 					<div class="container-contact2-form-btn">
 						<div class="wrap-contact2-form-btn">
@@ -227,7 +228,7 @@
 
 		gtag('config', 'UA-23581568-13');
 	</script>
-
+	<script src="./js/file_input.js"></script>
 	<script src="./js/firebase.js"></script>
 	<script src="./js/sign_in.js"></script>
 
