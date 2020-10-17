@@ -1,11 +1,12 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const firebase = require('firebase-admin');
-import 'firebase/storage'; 
+
 // import * from 'firebase';
 // const firebase = require('firebase/app');
 // require('firebase/database');
 // require('firebase/analytics');
+
 var firebaseConfig = {
     apiKey: "AIzaSyCZ67Ve4ozcjpLZYsE_zxDSL1JkCZrq2aY",
     authDomain: "grandhackathon.firebaseapp.com",
@@ -21,12 +22,7 @@ var firebaseConfig = {
 //   firebase.analytics();
   const db = firebase.firestore();
   db.settings({ timestampsInSnapshots: true});
-  var storage = firebase.storage();
-
-  // Create a storage reference from our storage service
-  var storageRef = storage.ref();
-  
-//   var storageRef = firebase.storage().ref();
+ 
 //firebase thing-yy;
 
 
@@ -120,37 +116,7 @@ app.post('/upload-question',(req,res) => {
         res.redirect('./')
     );
 
-    const file = input_data.images;
-    console.log(file)
-    const metadata = { contentType: 'image/jpeg' }; // or whatever you want
-    const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child(`images/${file.name}`).put(file, metadata);
     
-    
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
-      // If you want to show upload progress, do whatever you want with progress...
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      switch (snapshot.state) {
-        case firebase.storage.TaskState.PAUSED:
-          console.log('Upload is paused');
-          break;
-        case firebase.storage.TaskState.RUNNING:
-          console.log('Upload is running');
-          break;
-      }
-    }, error => {
-      console.log(error);
-    }, () => {
-      // upload finished with success, you can get the download URL
-      uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-        console.log(downloadURL);
-        db.collection('images').add({
-            img:downloadURL,
-            id:specific_id
-          });
-    
-      });
-    });
     
 });
 

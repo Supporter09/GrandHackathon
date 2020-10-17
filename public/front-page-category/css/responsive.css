@@ -2,9 +2,28 @@
 
 /* Screens Resolution : 992px
 -------------------------------------------------------------------------- */
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 2400px) {
 	
+	/* ---------------------------------
+	1. PRIMARY STYLES
+	--------------------------------- */
+
+	h1{ font-size: 4em; }
+	h2{ font-size: 3em; }
+	h3{ font-size: 2em; }
 	
+	/* COMMoNS */
+	
+	.no-left-padding{ padding-left: 15px; }
+
+	.no-right-padding{ padding-right: 15px; }
+
+	
+	/* MENU */
+	
+	/* SEARCH AREA */
+
+	header .src-area{ width: 20%; }
 }
 
 /* Screens Resolution : 992px

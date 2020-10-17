@@ -11,8 +11,7 @@
 	<!-- Font -->
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-
-
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 	<!-- Stylesheets -->
 
 	<link href="common-css/bootstrap.css" rel="stylesheet">
@@ -26,7 +25,7 @@
 
 	<link href="front-page-category/css/responsive.css" rel="stylesheet">
 	<script src="./common-js/jquery-3.1.1.min.js"></script>
-
+	<link href="./css/search_bar.css" rel="stylesheet">
 	<!-- FIREBASE -->
 	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
@@ -74,18 +73,20 @@
 			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
 
 			<ul class="main-menu visible-on-click" id="main-menu">
-				<li>
-					<form>
-						<input id="myInput" type="text" name="search" placeholder="Search..">
-					</form>
-				</li>
+				
 				<li><a href="/">Home</a></li>
 				<li><a href="/upload-question">Ask a question</a></li>
 				<li><a href="/blank-static">About Us</a></li>
 				<li><a href="/sign_up" id="sign_up">Sign Up</a></li>
-				
+
 			</ul><!-- main-menu -->
 
+			<span class="src-area">
+				<form>
+					<button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+					<input class="src-input" id="myInput" type="text" placeholder="Your Question?">
+				</form>
+			</span>
 		</div><!-- conatiner -->
 	</header>
 
