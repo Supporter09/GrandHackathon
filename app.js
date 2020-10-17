@@ -1,10 +1,12 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const firebase = require('firebase-admin');
+
 // import * from 'firebase';
 // const firebase = require('firebase/app');
 // require('firebase/database');
 // require('firebase/analytics');
+
 var firebaseConfig = {
     apiKey: "AIzaSyCZ67Ve4ozcjpLZYsE_zxDSL1JkCZrq2aY",
     authDomain: "grandhackathon.firebaseapp.com",
@@ -20,8 +22,7 @@ var firebaseConfig = {
 //   firebase.analytics();
   const db = firebase.firestore();
   db.settings({ timestampsInSnapshots: true});
-  
-//   var storageRef = firebase.storage().ref();
+ 
 //firebase thing-yy;
 
 
@@ -114,6 +115,8 @@ app.post('/upload-question',(req,res) => {
     }).then(
         res.redirect('./')
     );
+
+    
     
 });
 
@@ -148,7 +151,7 @@ app.post('/post/:postID',(req,res) => {
     const comments_array = db.collection('Posts').doc(postID).update({
         Comments: firebase.firestore.FieldValue.arrayUnion(new_comment)
     }).then(
-        
+
     );
     // const add_new_comment = await comments_array.update() 
 })
