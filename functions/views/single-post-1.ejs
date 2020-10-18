@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
-	<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self';font-src 'self'; img-src 'self' data: https:; style-src 'self' ; script-src 'self'">
+	<meta default-src 'self'; script-src 'report-sample' 'self'; style-src 'report-sample' 'self'; object-src 'none'; base-uri 'self'; connect-src 'self'; font-src 'self'; frame-src 'self'; img-src 'self'; manifest-src 'self'; media-src 'self'; report-uri https://5f8b0d0f07c95d03bf76d3c9.endpoint.csper.io/; worker-src 'none';>
 
 	<!-- Font -->
 
@@ -30,6 +30,8 @@
 	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
 
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
+
 </head>
 <body >
 
@@ -50,7 +52,7 @@
 				<li><a href="/upload-question">Ask a question</a></li>
 				<li><a href="/blank-static">About Us</a></li>
 				<li><a href="/sign_up" id="sign_up">Sign Up</a></li>
-				
+
 			</ul><!-- main-menu -->
 
 		</div><!-- conatiner -->
@@ -69,7 +71,7 @@
 
 			<div class="row">
 
-				<div class="col-lg-8 col-md-12 no-right-padding">
+				<div class="col-lg-12 col-md-12 no-right-padding">
 
 					<div class="main-post">
 
@@ -82,7 +84,7 @@
 								</div>
 
 								<div class="middle-area">
-									<a class="name" href="#"><b><%= data.Name %> </b></a>
+									<a class="name" href="#"><b><%= data.name %> </b></a>
 									<h6 class="date">on <%= data.timePosted%></h6>
 								</div>
 
@@ -102,8 +104,10 @@
 
 						<div class="post-icons-area">
 							<ul class="post-icons">
-								<li><a href="#"><i class="ion-heart"></i><%= data.Likes%></a></li>
-								<li><a href="#"><i class="ion-chatbubble"></i><%=data.Comments.length%></a></li>
+								<li>
+									<button class = "heart">👏 <span id = "likeNumber"><%= data.likes%></span></button>
+								</li>
+								<li><a href="#" class = "comment"><i class="ion-chatbubble"></i><%=data.comments.length%></a></li>
 								<!-- <li><a href="#"><i class="ion-eye"></i>138</a></li> -->
 							</ul>
 
@@ -122,8 +126,8 @@
 							</div>
 
 							<div class="middle-area">
-								<a class="name" href="#"><b>Katy Liu</b></a>
-								<h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
+								<a class="name" href="#"><b><%=data.name%></b></a>
+								<h6 class="date"><%=data.timePosted%></h6>
 							</div>
 
 						</div><!-- post-info -->
@@ -131,49 +135,6 @@
 
 					</div><!-- main-post -->
 				</div><!-- col-lg-8 col-md-12 -->
-
-				<div class="col-lg-4 col-md-12 no-left-padding">
-
-					<div class="single-post info-area">
-
-						<div class="sidebar-area about-area">
-							<h4 class="title"><b>ABOUT BONA</b></h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-								ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-								Ut enim ad minim veniam</p>
-						</div>
-
-						<div class="sidebar-area subscribe-area">
-
-							<h4 class="title"><b>SUBSCRIBE</b></h4>
-							<div class="input-area">
-								<form>
-									<input class="email-input" type="text" placeholder="Enter your email">
-									<button class="submit-btn" type="submit"><i class="icon ion-ios-email-outline"></i></button>
-								</form>
-							</div>
-
-						</div><!-- subscribe-area -->
-
-						<!-- <div class="tag-area">
-
-							<h4 class="title"><b>TAG CLOUD</b></h4>
-							<ul>
-								<li><a href="#">Manual</a></li>
-								<li><a href="#">Liberty</a></li>
-								<li><a href="#">Recomendation</a></li>
-								<li><a href="#">Interpritation</a></li>
-								<li><a href="#">Manual</a></li>
-								<li><a href="#">Liberty</a></li>
-								<li><a href="#">Recomendation</a></li>
-								<li><a href="#">Interpritation</a></li>
-							</ul> -->
-
-						</div><!-- subscribe-area -->
-
-					</div><!-- info-area -->
-
-				</div><!-- col-lg-4 col-md-12 -->
 
 			</div><!-- row -->
 
@@ -189,7 +150,7 @@
 
 				<div class="col-lg-8 col-md-12">
 					<div class="comment-form">
-						<form method="post" id = "comment">
+						<form method="post">
 							<div class="row">
 
 								<div class="col-sm-6">
@@ -213,63 +174,8 @@
 						</form>
 					</div><!-- comment-form -->
 
-					<h4><b>COMMENTS(<%= data.Comments.length%>)</b></h4>
-
-					<!-- <div class="commnets-area">
-
-						<div class="comment">
-
-							<div class="post-info">
-
-								<div class="left-area">
-									<a class="avatar" href="#"><img src="../images/avatar-1-120x120.jpg" alt="Profile Image"></a>
-								</div>
-
-								<div class="middle-area">
-									<a class="name" href="#"><b>Katy Liu</b></a>
-									<h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
-								</div>
-
-								<div class="right-area">
-									<h5 class="reply-btn" ><a href="#"><b>REPLY</b></a></h5>
-								</div>
-
-							</div>post-info
-
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-								ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-								Ut enim ad minim veniam</p>
-
-						</div> 
-
-						<div class="comment">
-							<h5 class="reply-for">Reply for <a href="#"><b>Katy Lui</b></a></h5>
-
-							<div class="post-info">
-
-								<div class="left-area">
-									<a class="avatar" href="#"><img src="../images/avatar-1-120x120.jpg" alt="Profile Image"></a>
-								</div>
-
-								<div class="middle-area">
-									<a class="name" href="#"><b>Katy Liu</b></a>
-									<h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
-								</div>
-
-								<div class="right-area">
-									<h5 class="reply-btn" ><a href="#"><b>REPLY</b></a></h5>
-								</div>
-
-							</div> post-info
-
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-								ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-								Ut enim ad minim veniam</p>
-
-						</div>
-
-					</div> commnets-area -->
-					<% data.Comments.forEach((single_data) =>{ %> 
+					<h4><b>COMMENTS(<%= data.comments.length%>)</b></h4>
+					<% data.comments.forEach((single_data) =>{ %>
 					<div class="commnets-area ">
 
 						<div class="comment">
@@ -281,8 +187,8 @@
 								</div> -->
 
 								<div class="middle-area">
-									<a class="name" href="#"><b><%= single_data.Name%></b></a>
-									<h6 class="date">on <%= single_data.Time%></h6>
+									<a class="name" href="#"><b><%= single_data.name%></b></a>
+									<h6 class="date">on <%= single_data.time%></h6>
 								</div>
 
 								<div class="right-area">
@@ -291,12 +197,13 @@
 
 							</div><!-- post-info -->
 
-							<p><%= single_data.Content%></p>
+							<p><%= single_data.content%></p>
 
 						</div>
 
 					</div><!-- commnets-area -->
-					<% }); %> 
+					<% }); %>
+
 					<!-- <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</a> -->
 
 				</div><!-- col-lg-8 col-md-12 -->
@@ -313,10 +220,9 @@
 
 				<div class="col-lg-4 col-md-6">
 					<div class="footer-section">
-
 						<a class="logo" href="#"><img src="../images/logo.png" alt="Logo Image"></a>
 						<p class="copyright">Bona @ 2017. All rights reserved.</p>
-						<p class="copyright">Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+						<p class="copyright">Designed by <a href="#" target="_blank">Duc Bui</a></p>
 						<ul class="icons">
 							<li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
 							<li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
@@ -329,17 +235,17 @@
 				</div><!-- col-lg-4 col-md-6 -->
 
 				<div class="col-lg-4 col-md-6">
-						<div class="footer-section">
+					<div class="footer-section">
 						<h4 class="title"><b>CATAGORIES</b></h4>
 						<ul>
-							<li><a href="#">BEAUTY</a></li>
-							<li><a href="#">HEALTH</a></li>
-							<li><a href="#">MUSIC</a></li>
+							<li><a href="#">MATH</a></li>
+							<li><a href="#">CHEMISTRY</a></li>
+							<li><a href="#">PHYSICS</a></li>
 						</ul>
 						<ul>
-							<li><a href="#">SPORT</a></li>
-							<li><a href="#">DESIGN</a></li>
-							<li><a href="#">TRAVEL</a></li>
+							<li><a href="#">LITERATURE</a></li>
+							<li><a href="#">LANGUAGE</a></li>
+							<li><a href="#">ELSE</a></li>
 						</ul>
 					</div><!-- footer-section -->
 				</div><!-- col-lg-4 col-md-6 -->
@@ -349,10 +255,11 @@
 
 						<h4 class="title"><b>SUBSCRIBE</b></h4>
 						<div class="input-area">
-							<div>
+							<form>
 								<input class="email-input" type="text" placeholder="Enter your email">
-								<button class="submit-btn" type="submit"><i class="icon ion-ios-email-outline"></i></button>
-							</div>
+								<button class="submit-btn" type="submit"><i
+											class="icon ion-ios-email-outline"></i></button>
+							</form>
 						</div>
 
 					</div><!-- footer-section -->
@@ -364,23 +271,25 @@
 
 
 	<!-- SCIPTS -->
+	<script src="./js/send_email.js"></script>
 
-	<script src="../common-js/jquery-3.1.1.min.js"></script>
+	<script src="./common-js/jquery-3.1.1.min.js"></script>
 
-	<script src="../common-js/tether.min.js"></script>
+	<script src="./common-js/tether.min.js"></script>
 
-	<script src="../common-js/bootstrap.js"></script>
+	<script src="./common-js/bootstrap.js"></script>
 
-	<script src="../common-js/scripts.js"></script>
+	<script src="./common-js/scripts.js"></script>
 
 	<script src="./js/firebase.js"></script>
 
 	<script src="./js/comment.js"></script>
 
-	<!-- <script src="./js/sign_in.js"></script> -->
+	<script src="./js/sign_in.js"></script>
 
-	<script src="../js/render_question.js"></script>
+	<script src="./js/render_question.js"></script>
 
-	<!-- <script src="../js/rerender.js"></script> -->
+	<script src="./js/rerender.js"></script>
+	<script src="./js/updateLike.js"></script>
 </body>
 </html>

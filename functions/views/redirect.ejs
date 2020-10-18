@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <h1><%= mess%></h1>
+    <% var li = link; %> 
+    <script>
+        window.onload = () => {
+            var li = `<%= li %>` ;
+        	window.location.href = `${li}`;
+        }
+    </script>
+</body>
+</html>
