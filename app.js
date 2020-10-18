@@ -131,8 +131,8 @@ app.get('/post',(req,res) => {
             data.comments = data.comments.sort((a,b) => {
                 return !(new Date(b.time) - new Date(a.time));
             })
-    
-            res.render('single-post-1', {data: dat.data()});
+            console.log(data);
+            res.render('single-post-1', {data: data});
         })
         .catch((err) => {
             console.log(err);
